@@ -1,0 +1,796 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Things I Couldn't Say</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Parisienne&display=swap');
+
+:root {
+  --night: #151014;
+  --paper: #eee2d1;
+  --ink: #37252b;
+  --wine: #742c40;
+  --rose: #bc7c88;
+  --gold: #c6a66c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% 0%, #40212d 0%, transparent 55%),
+    var(--night);
+  color: var(--paper);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  padding: 26px 15px 50px;
+}
+
+button { font: inherit; cursor: pointer; }
+[hidden] { display: none !important; }
+
+.page {
+  max-width: 620px;
+  margin: auto;
+}
+
+.topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font: 9px 'DM Mono', monospace;
+  color: #c2a5a9;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #67404a;
+}
+
+.hero {
+  text-align: center;
+  padding: 43px 10px 34px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font: 10px 'DM Mono', monospace;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(43px, 11vw, 69px);
+  font-weight: 400;
+  line-height: .95;
+  letter-spacing: -2px;
+  margin: 18px 0;
+}
+
+h1 em { color: #d99ba7; }
+
+.hero p {
+  max-width: 350px;
+  margin: 0 auto;
+  font-size: 19px;
+  font-style: italic;
+  color: #cdb9bd;
+  line-height: 1.5;
+}
+
+.section-label {
+  font: 9px 'DM Mono', monospace;
+  letter-spacing: 2px;
+  color: var(--gold);
+  margin: 26px 0 12px;
+}
+
+.paper {
+  background: linear-gradient(115deg, #f3e8d8, #e4d3bf);
+  color: #000;
+  padding: 27px 24px;
+  position: relative;
+  box-shadow: 0 15px 40px #0004;
+}
+
+.paper:before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid #a58b7660;
+  pointer-events: none;
+}
+
+.letter-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 9px 'DM Mono', monospace;
+  letter-spacing: 1px;
+  color: #785d5a;
+  gap: 8px;
+}
+
+.seal {
+  margin: 27px auto 19px;
+  width: 91px;
+  height: 91px;
+  border-radius: 50%;
+  background: #6e283b;
+  display: grid;
+  place-items: center;
+  color: #f1c6c3;
+  font-size: 40px;
+  box-shadow: 0 5px 12px #5a25332c;
+}
+
+/* Isi surat menggunakan warna hitam. */
+.paper,
+.paper h2,
+.paper-intro,
+.letter-head,
+#letter,
+#letter p,
+#letter .letter-body,
+#letter .signature {
+  color: #000 !important;
+}
+
+/* Tipografi isi love letter. */
+.paper h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  letter-spacing: .2px;
+  text-align: center;
+  font-size: 31px;
+  margin: 0 0 10px;
+}
+
+.paper-intro {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.5;
+  max-width: 350px;
+  margin: auto;
+}
+
+.letter-body {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.85;
+  letter-spacing: .05px;
+  white-space: normal;
+}
+
+.letter-body p { margin: 0 0 18px; }
+
+.signature {
+  font-family: 'Parisienne', 'Cormorant Garamond', cursive;
+  margin-top: 27px;
+  padding-top: 18px;
+  border-top: 1px solid #b9a18e;
+  font-style: normal;
+  font-size: 29px;
+  line-height: 1.7;
+}
+
+#letter .art-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+#letter .art-caption {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+}
+
+/* Tombol umum. */
+.action {
+  display: block;
+  width: 100%;
+  border: 1px solid #d6a6ac;
+  background: var(--wine);
+  color: #fff0e5;
+  padding: 14px;
+  margin-top: 25px;
+  font-size: 15px;
+  letter-spacing: .4px;
+  transition: .2s;
+}
+
+.action:active { transform: scale(.98); }
+
+.secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: #bda59a;
+}
+
+/* Arsip kenangan. */
+.chapter { margin-top: 32px; }
+
+.chapter h2 {
+  font-size: 30px;
+  font-weight: 400;
+  margin: 8px 0;
+}
+
+.chapter > p {
+  color: #c9b5bc;
+  font-size: 17px;
+  line-height: 1.5;
+  margin-top: 0;
+}
+
+.keepsakes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 17px;
+}
+
+.keep {
+  min-height: 140px;
+  background: #21171d;
+  border: 1px solid #573541;
+  color: #eee0d5;
+  padding: 14px 8px;
+  text-align: center;
+  transition: .2s;
+}
+
+.keep:active,
+.keep.open {
+  border-color: var(--gold);
+  background: #38212a;
+}
+
+.keep .symbol {
+  font-size: 28px;
+  display: block;
+  margin: 8px 0 12px;
+}
+
+.keep strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.keep small {
+  display: block;
+  color: #c4a5ae;
+  font-size: 12px;
+  margin-top: 7px;
+}
+
+.reveal {
+  display: none;
+  background: #281c22;
+  border-left: 2px solid var(--gold);
+  padding: 17px;
+  margin-top: 12px;
+  font-size: 19px;
+  line-height: 1.5;
+  color: #f0dce0;
+  animation: appear .35s ease;
+}
+
+.reveal.show { display: block; }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Bagian surprise. */
+.surprise {
+  margin-top: 35px;
+  padding: 27px 20px;
+  border: 1px solid #8d5a62;
+  background: linear-gradient(140deg, #351c27, #20141b);
+  text-align: center;
+}
+
+.surprise h2 {
+  font-size: 33px;
+  font-weight: 400;
+  margin: 13px 0;
+}
+
+.surprise p {
+  font-size: 17px;
+  color: #d3b9c0;
+  line-height: 1.5;
+}
+
+.lock {
+  display: inline-block;
+  font-size: 37px;
+  margin: 9px 0;
+}
+
+.surprise .action {
+  max-width: 300px;
+  margin: 22px auto 0;
+}
+
+#letter {
+  display: none;
+  margin-top: 20px;
+  text-align: left;
+  animation: appear .6s ease;
+}
+
+#letter.show { display: block; }
+
+/* Ilustrasi bunga tetap memakai warna dekoratif semula. */
+.art {
+  margin-top: 30px;
+  border-top: 1px solid #65434b;
+  border-bottom: 1px solid #65434b;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.art-title {
+  font: 9px 'DM Mono', monospace;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+
+.gift-image {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.gift-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.art-caption {
+  font-size: 17px;
+  color: #c8abb4;
+  font-style: italic;
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+.footer {
+  text-align: center;
+  padding-top: 27px;
+  color: #a98a96;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.footer .heart {
+  color: #d98b9c;
+  font-size: 22px;
+}
+
+/* MINI GAME PEMBUKA */
+.game-screen {
+  max-width: 620px;
+  margin: 28px auto 34px;
+  padding: 25px 20px 22px;
+  border: 1px solid #80505d;
+  background: linear-gradient(145deg, #351b27, #1e141b 78%);
+  box-shadow: 0 18px 45px #0005;
+  text-align: center;
+}
+
+.game-kicker {
+  color: var(--gold);
+  font: 9px 'DM Mono', monospace;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.game-screen h2 {
+  margin: 13px 0 8px;
+  color: #f2e4d7;
+  font-size: clamp(29px, 7vw, 39px);
+  font-weight: 400;
+}
+
+.game-copy {
+  max-width: 390px;
+  margin: 0 auto 18px;
+  color: #d6bdc3;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.game-stats {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 18px 0 15px;
+}
+
+.game-stat {
+  min-width: 105px;
+  padding: 9px 13px;
+  border: 1px solid #65404b;
+  color: #f0dce0;
+  font: 11px 'DM Mono', monospace;
+  letter-spacing: .5px;
+}
+
+.heart-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 390px;
+  margin: 0 auto;
+}
+
+.heart-target {
+  min-height: 67px;
+  border: 1px solid #784050;
+  border-radius: 4px;
+  background: #291721;
+  color: #d88b9a;
+  font-size: 32px;
+  transition: transform .15s, background .15s, border-color .15s;
+  touch-action: manipulation;
+}
+
+.heart-target:active { transform: scale(.92); }
+
+.heart-target.collected {
+  background: #eee2d1;
+  color: #742c40;
+  border-color: #c6a66c;
+  transform: scale(.96);
+}
+
+.heart-target:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.game-status {
+  min-height: 28px;
+  margin: 15px 0 0;
+  color: #e7c4cb;
+  font-size: 16px;
+}
+
+.game-actions {
+  max-width: 390px;
+  margin: 0 auto;
+}
+
+.game-actions .action { margin-top: 12px; }
+
+.game-note {
+  margin: 13px 0 0;
+  color: #a98a96;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+@media (max-width: 360px) {
+  body { padding: 17px 10px; }
+  .paper { padding: 22px 17px; }
+  .keepsakes { gap: 6px; }
+  .keep { padding: 10px 4px; }
+  .keep strong { font-size: 14px; }
+  .keep small { font-size: 11px; }
+  .game-screen { padding: 22px 13px; }
+  .heart-grid { gap: 7px; }
+  .heart-target { min-height: 59px; font-size: 28px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- STEP 0: MINI GAME -->
+<section class="game-screen" id="heartGame" aria-labelledby="gameTitle">
+  <div class="game-kicker">A little game before the letter</div>
+  <h2 id="gameTitle">Gather My Hearts</h2>
+
+  <p class="game-copy">
+    Before you enter, collect eight little hearts for me.
+    Tap the hearts below before the time runs out.
+  </p>
+
+  <div class="game-stats" aria-live="polite">
+    <div class="game-stat">
+      HEARTS <span id="heartCount">0</span> / 8
+    </div>
+    <div class="game-stat">
+      TIME <span id="heartTimer">25</span>s
+    </div>
+  </div>
+
+  <div class="heart-grid" id="heartGrid"
+       aria-label="Tap hearts to collect them">
+    <button class="heart-target" type="button" aria-label="Collect heart 1">♡</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 2">♥</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 3">♡</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 4">♥</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 5">♡</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 6">♥</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 7">♡</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 8">♥</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 9">♡</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 10">♥</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 11">♡</button>
+    <button class="heart-target" type="button" aria-label="Collect heart 12">♥</button>
+  </div>
+
+  <p class="game-status" id="gameStatus" aria-live="polite">
+    Eight hearts, twenty-five seconds. You can do this. ♡
+  </p>
+
+  <div class="game-actions">
+    <button class="action" id="restartGame" type="button">
+      Try Again ↺
+    </button>
+    <button class="action" id="enterLetter" type="button" hidden>
+      Enter My Little World ♡
+    </button>
+  </div>
+
+  <p class="game-note">
+    A small game, made with a heart that still belongs in these words.
+  </p>
+</section>
+
+<!-- WEBSITE UTAMA: TIGA BAGIAN ASLI -->
+<main class="page" id="experience" hidden>
+
+  <div class="topline">
+    <span>A letter from M.</span>
+    <span>October 26 · IV</span>
+  </div>
+
+  <header class="hero">
+    <div class="eyebrow">For the one I still love</div>
+    <h1>The Things<br>I <em>Couldn't Say.</em></h1>
+    <p>
+      Some feelings arrive too late as words.
+      Some apologies begin where pride ends.
+    </p>
+  </header>
+
+  <!-- STEP 1: AN UNFINISHED LETTER -->
+  <div class="section-label">01 — AN UNFINISHED LETTER</div>
+
+  <section class="paper">
+    <div class="letter-head">
+      <span>PRIVATE CORRESPONDENCE</span>
+      <span>26 / X</span>
+    </div>
+
+    <div class="seal">M.</div>
+
+    <h2>Dear Grossvenor,</h2>
+    <p class="paper-intro">
+      There is something I have been carrying in my heart,
+      something I wish I had known how to say differently.
+    </p>
+
+    <button class="action" onclick="openKeepsakes()">
+      Open Our Little Archive ↗
+    </button>
+  </section>
+
+  <!-- STEP 2: THREE KEEPSAKES -->
+  <section class="chapter" id="archive">
+    <div class="section-label">02 — THINGS THAT STILL MATTER</div>
+    <h2>Three little keepsakes.</h2>
+    <p>
+      Touch each one. They hold the words I never want
+      this difficult moment to erase.
+    </p>
+
+    <div class="keepsakes">
+      <button class="keep" onclick="reveal(0,this)">
+        <span class="symbol">✉</span>
+        <strong>The Beginning</strong>
+        <small>A little memory</small>
+      </button>
+
+      <button class="keep" onclick="reveal(1,this)">
+        <span class="symbol">♡</span>
+        <strong>Your Presence</strong>
+        <small>A little gratitude</small>
+      </button>
+
+      <button class="keep" onclick="reveal(2,this)">
+        <span class="symbol">☾</span>
+        <strong>Right Now</strong>
+        <small>A little honesty</small>
+      </button>
+    </div>
+
+    <div class="reveal" id="memory"></div>
+  </section>
+
+  <!-- STEP 3: SURPRISE AND FULL LOVE LETTER -->
+  <section class="surprise">
+    <div class="eyebrow">03 — SOMETHING I KEPT FOR YOU</div>
+    <div class="lock" id="lock">✧</div>
+    <h2>A little surprise.</h2>
+
+    <p id="surpriseText">
+      Not a promise that everything will be easy.
+      Just a heart with something important left to say.
+    </p>
+
+    <button class="action" id="surpriseButton" onclick="openSurprise()">
+      Unseal the Last Letter ♡
+    </button>
+
+    <article id="letter">
+      <div class="paper">
+        <div class="letter-head">
+          <span>FROM MY HEART</span>
+          <span>TO YOURS</span>
+        </div>
+
+        <h2 style="margin-top:24px">To my lovely man,</h2>
+
+        <div class="letter-body">
+          <p>
+            I've been trying to find the right words, but every
+            sentence feels too small for the weight of what I feel.
+            With our fourth mensiversary coming on the 26th, I
+            thought I would be writing you something full of
+            happiness, little memories, and all the reasons I am
+            grateful to have you. Instead, I find myself writing
+            with a heavy heart, wishing I could take back the words
+            that hurt you yesterday.
+          </p>
+
+          <p>
+            I am genuinely sorry, Venor. I am sorry for the
+            things I said, for the pain I caused, and for letting
+            my words become something that could hurt the person
+            I love so deeply. I can't hide behind my emotions
+            or pretend that being upset makes everything I said
+            okay. You did not deserve to be hurt by someone who
+            should have been more careful with your heart.
+          </p>
+
+          <p>
+            I feel guilty knowing that I may have turned a day
+            that was supposed to be special for us into something
+            painful. Our fourth month together was meant to be
+            another little chapter we could look back on with
+            warmth. It breaks my heart that we are approaching
+            it like this, with distance between us, difficult
+            feelings left unanswered, and so much uncertainty
+            about where we stand. I am sorry for my part in
+            bringing us here. I wish I had chosen gentler words.
+            I wish I had paused, listened, and thought about
+            how deeply they might affect you before letting
+            them leave my mouth.
+          </p>
+
+          <p>
+            Thank you for coming into my life, for choosing me,
+            and for giving me a place in yours. Thank you for
+            the moments we have shared, the conversations,
+            the affection, and the little things that may have
+            seemed ordinary at the time but mean so much to me
+            now. Thank you for being someone I got to love,
+            someone whose presence became part of my days.
+            I'll never treat the fact that you chose me as
+            something insignificant. Being loved by you has
+            meant more to me than I've always known how
+            to express.
+          </p>
+
+          <p>
+            I know we are having our alone time right now,
+            and I want to respect that. I don't want this
+            letter to become another way of pressuring you
+            into answering me before you are ready. I don't 
+            know whether we're still holding on to this
+            relationship or whether we've reached a place
+            neither of us knows how to name yet. That
+            uncertainty hurts, but I know I can't decide
+            how you feel for you, and I cant ask you to
+            ignore your own hurt just because I miss you.
+          </p>
+
+          <p>
+            Still, I need you to know that I am sorry.
+            I am sorry not only because I am afraid of losing
+            you, but because I hurt you, and that matters
+            regardless of what happens to us. If you need
+            time, I'll try to understand. If forgiveness
+            takes time, I know I have no right to demand it.
+            I only hope that one day, when the hurt feels
+            a little lighter, you might find room in your
+            heart to forgive me. I know an apology cannot
+            undo what happened, but I want my actions,
+            not just these words, to show that I understand
+            why my words mattered.
+          </p>
+
+          <p>
+            I still love you, Venor. Even in this
+            quiet, even in the uncertainty, even while I
+            am sitting with the consequences of my own
+            words, that love is still here. I miss the
+            comfort of knowing we are okay. I miss the
+            thought of celebrating another month with you
+            without all this sadness between us. But more
+            than getting back to how things were, I wish
+            for healing—for you, for me, and for whatever
+            truth remains between us.
+          </p>
+
+          <p>
+            So, on our fourth mensiversary, I don't wanna
+            pretend that everything is perfect. I wanna
+            be honest. I am grateful that you happened
+            to find your way into my life. I am grateful
+            that, for these months, we got to call each
+            other ours. And I am sorry that I let my words
+            cast a shadow over a day I wanted to make
+            beautiful for you.
+          </p>
+
+          <p>
+            If there is one thing I hope you carry from
+            this letter, it is that you were never
+            insignificant to me. You were never just
+            another passing chapter. You're someone I
+            chose with love, someone I am thankful to
+            have met, and someone I wish I had treated
+            more gently when it mattered most.
+          </p>
+
+          <p>
+            I can't promise that these words will fix
+            anything. I can only offer you my sincere
+            apology, my gratitude, and a heart that still
+            wishes you peace, even while it aches.
+            Whatever you need right now, I hope you
+            know that I am sorry for the hurt I caused.
+          </p>
+
+          <p>
+            Happy fourth mensiversary, I guess.
+            I wish this letter could have reached you
+            in happier circumstances. I wish I could
+            give you these flowers without a heavy
+            apology attached to them. But this is
+            where we are today, and I wanted to give
+            you something honest rather than pretend
+            that my heart has nothing to regret.
+          </p>
+
+          <p>
+            Thank you for choosing me, Venor.
+            Thank you for being part of my life.
+            And, if your heart can find its way there
+            in its own time, I hope you can forgive me.
+          </p>
+        </div>
+
+        <div class="signature">
+          With a all of my heart, and the love
