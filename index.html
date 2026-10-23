@@ -115,6 +115,18 @@ h1 em { color: #d99ba7; }
   gap: 8px;
 }
 
+/* Semua teks dalam surat berwarna hitam. */
+.paper,
+.paper h2,
+.paper-intro,
+.paper .letter-head,
+#letter,
+#letter p,
+#letter .letter-body,
+#letter .signature {
+  color: #000 !important;
+}
+
 .seal {
   margin: 27px auto 19px;
   width: 91px;
@@ -128,19 +140,6 @@ h1 em { color: #d99ba7; }
   box-shadow: 0 5px 12px #5a25332c;
 }
 
-/* Isi surat menggunakan warna hitam. */
-.paper,
-.paper h2,
-.paper-intro,
-.letter-head,
-#letter,
-#letter p,
-#letter .letter-body,
-#letter .signature {
-  color: #000 !important;
-}
-
-/* Tipografi isi love letter. */
 .paper h2 {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 500;
@@ -166,9 +165,13 @@ h1 em { color: #d99ba7; }
   line-height: 1.85;
   letter-spacing: .05px;
   white-space: normal;
+  color: #000 !important;
 }
 
-.letter-body p { margin: 0 0 18px; }
+.letter-body p {
+  margin: 0 0 18px;
+  color: #000 !important;
+}
 
 .signature {
   font-family: 'Parisienne', 'Cormorant Garamond', cursive;
@@ -178,20 +181,10 @@ h1 em { color: #d99ba7; }
   font-style: normal;
   font-size: 29px;
   line-height: 1.7;
+  color: #000 !important;
 }
 
-#letter .art-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 11px;
-  letter-spacing: 2px;
-}
-
-#letter .art-caption {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-}
-
-/* Tombol umum. */
+/* Tombol website. */
 .action {
   display: block;
   width: 100%;
@@ -213,7 +206,7 @@ h1 em { color: #d99ba7; }
   border-color: #bda59a;
 }
 
-/* Arsip kenangan. */
+/* Tiga keepsakes. */
 .chapter { margin-top: 32px; }
 
 .chapter h2 {
@@ -331,7 +324,7 @@ h1 em { color: #d99ba7; }
 
 #letter.show { display: block; }
 
-/* Ilustrasi bunga tetap memakai warna dekoratif semula. */
+/* Ilustrasi bunga: tulisan tetap dekoratif. */
 .art {
   margin-top: 30px;
   border-top: 1px solid #65434b;
@@ -370,6 +363,7 @@ h1 em { color: #d99ba7; }
   margin-top: 12px;
 }
 
+/* Footer. */
 .footer {
   text-align: center;
   padding-top: 27px;
@@ -383,7 +377,7 @@ h1 em { color: #d99ba7; }
   font-size: 22px;
 }
 
-/* MINI GAME PEMBUKA */
+/* MINI GAME: GATHER MY HEARTS */
 .game-screen {
   max-width: 620px;
   margin: 28px auto 34px;
@@ -509,16 +503,16 @@ h1 em { color: #d99ba7; }
   <h2 id="gameTitle">Gather My Hearts</h2>
 
   <p class="game-copy">
-    Before you enter, collect eight little hearts for me.
-    Tap the hearts below before the time runs out.
+    Before you enter, collect ten little hearts for me.
+    Tap ten hearts below before the ten seconds run out.
   </p>
 
   <div class="game-stats" aria-live="polite">
     <div class="game-stat">
-      HEARTS <span id="heartCount">0</span> / 8
+      HEARTS <span id="heartCount">0</span> / 10
     </div>
     <div class="game-stat">
-      TIME <span id="heartTimer">25</span>s
+      TIME <span id="heartTimer">10</span>s
     </div>
   </div>
 
@@ -539,15 +533,15 @@ h1 em { color: #d99ba7; }
   </div>
 
   <p class="game-status" id="gameStatus" aria-live="polite">
-    Eight hearts, twenty-five seconds. You can do this. ♡
+    Ten hearts. Ten seconds. Ready, my love?
   </p>
 
   <div class="game-actions">
     <button class="action" id="restartGame" type="button">
-      Try Again ↺
+      Try Again.
     </button>
     <button class="action" id="enterLetter" type="button" hidden>
-      Enter My Little World ♡
+      Enter My Little World.
     </button>
   </div>
 
@@ -556,12 +550,12 @@ h1 em { color: #d99ba7; }
   </p>
 </section>
 
-<!-- WEBSITE UTAMA: TIGA BAGIAN ASLI -->
+<!-- WEBSITE UTAMA: TIGA BAGIAN -->
 <main class="page" id="experience" hidden>
 
   <div class="topline">
     <span>A letter from M.</span>
-    <span>October 26 · IV</span>
+    <span>26 / 26 · 4</span>
   </div>
 
   <header class="hero">
@@ -582,11 +576,11 @@ h1 em { color: #d99ba7; }
       <span>26 / X</span>
     </div>
 
-    <div class="seal">M.</div>
+    <div class="seal">M</div>
 
     <h2>Dear Grossvenor,</h2>
     <p class="paper-intro">
-      There is something I have been carrying in my heart,
+      There is something I've been carrying in my heart,
       something I wish I had known how to say differently.
     </p>
 
@@ -639,7 +633,7 @@ h1 em { color: #d99ba7; }
     </p>
 
     <button class="action" id="surpriseButton" onclick="openSurprise()">
-      Unseal the Last Letter ♡
+      Unseal the Last Letter.
     </button>
 
     <article id="letter">
@@ -649,7 +643,7 @@ h1 em { color: #d99ba7; }
           <span>TO YOURS</span>
         </div>
 
-        <h2 style="margin-top:24px">To my lovely man,</h2>
+        <h2 style="margin-top:24px">To my Grossvenor,</h2>
 
         <div class="letter-body">
           <p>
@@ -669,7 +663,7 @@ h1 em { color: #d99ba7; }
             my words become something that could hurt the person
             I love so deeply. I can't hide behind my emotions
             or pretend that being upset makes everything I said
-            okay. You did not deserve to be hurt by someone who
+            okay. You didn't deserve to be hurt by someone who
             should have been more careful with your heart.
           </p>
 
@@ -678,7 +672,7 @@ h1 em { color: #d99ba7; }
             that was supposed to be special for us into something
             painful. Our fourth month together was meant to be
             another little chapter we could look back on with
-            warmth. It breaks my heart that we are approaching
+            warmth. It breaks my heart that we're approaching
             it like this, with distance between us, difficult
             feelings left unanswered, and so much uncertainty
             about where we stand. I am sorry for my part in
@@ -691,7 +685,7 @@ h1 em { color: #d99ba7; }
           <p>
             Thank you for coming into my life, for choosing me,
             and for giving me a place in yours. Thank you for
-            the moments we have shared, the conversations,
+            the moments we've shared, the conversations,
             the affection, and the little things that may have
             seemed ordinary at the time but mean so much to me
             now. Thank you for being someone I got to love,
@@ -704,14 +698,14 @@ h1 em { color: #d99ba7; }
 
           <p>
             I know we are having our alone time right now,
-            and I want to respect that. I don't want this
+            and I wanna respect that. I don't want this
             letter to become another way of pressuring you
-            into answering me before you are ready. I don't 
-            know whether we're still holding on to this
+            into answering me before you're ready. I don't 
+            know whether we are still holding on to this
             relationship or whether we've reached a place
             neither of us knows how to name yet. That
             uncertainty hurts, but I know I can't decide
-            how you feel for you, and I cant ask you to
+            how you feel for you, and I can't ask you to
             ignore your own hurt just because I miss you.
           </p>
 
@@ -735,7 +729,7 @@ h1 em { color: #d99ba7; }
             quiet, even in the uncertainty, even while I
             am sitting with the consequences of my own
             words, that love is still here. I miss the
-            comfort of knowing we are okay. I miss the
+            comfort of knowing we're okay. I miss the
             thought of celebrating another month with you
             without all this sadness between us. But more
             than getting back to how things were, I wish
@@ -744,7 +738,7 @@ h1 em { color: #d99ba7; }
           </p>
 
           <p>
-            So, on our fourth mensiversary, I don't wanna
+            So, on our fourth mensiversary, I don't want
             pretend that everything is perfect. I wanna
             be honest. I am grateful that you happened
             to find your way into my life. I am grateful
@@ -758,7 +752,7 @@ h1 em { color: #d99ba7; }
             If there is one thing I hope you carry from
             this letter, it is that you were never
             insignificant to me. You were never just
-            another passing chapter. You're someone I
+            another passing chapter. You are someone I
             chose with love, someone I am thankful to
             have met, and someone I wish I had treated
             more gently when it mattered most.
@@ -774,7 +768,7 @@ h1 em { color: #d99ba7; }
           </p>
 
           <p>
-            Happy fourth mensiversary, I guess.
+            Happy fourth mensiversary, yeah, I guess.
             I wish this letter could have reached you
             in happier circumstances. I wish I could
             give you these flowers without a heavy
@@ -793,4 +787,10 @@ h1 em { color: #d99ba7; }
         </div>
 
         <div class="signature">
-          With a all of my heart, and the love
+          With all of my heart, and the love that is
+          still here,<br>
+          Mahradhev.
+        </div>
+      </div>
+
+      <!-- ILUSTRASI BUNGA -->
